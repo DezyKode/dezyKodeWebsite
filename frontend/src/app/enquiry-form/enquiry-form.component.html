@@ -1,0 +1,260 @@
+<div class="enquiry-form">
+  <form [formGroup]="enquiryForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name:</label>
+      <input
+        id="firstName"
+        type="text"
+        formControlName="firstName"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          enquiryForm.get('firstName')?.invalid &&
+          enquiryForm.get('firstName')?.touched
+        "
+        class="text-danger"
+      >
+        First Name is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="middleName" class="form-label">Middle Name:</label>
+      <input
+        id="middleName"
+        type="text"
+        formControlName="middleName"
+        class="form-control"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name:</label>
+      <input
+        id="lastName"
+        type="text"
+        formControlName="lastName"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          enquiryForm.get('lastName')?.invalid &&
+          enquiryForm.get('lastName')?.touched
+        "
+        class="text-danger"
+      >
+        Last Name is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number:</label>
+      <input
+        id="phoneNumber"
+        type="text"
+        formControlName="phoneNumber"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          enquiryForm.get('phoneNumber')?.invalid &&
+          enquiryForm.get('phoneNumber')?.touched
+        "
+        class="text-danger"
+      >
+        Phone Number must be a valid 10-digit number.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="emailAddress" class="form-label">Email Address:</label>
+      <input
+        id="emailAddress"
+        type="email"
+        formControlName="emailAddress"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          enquiryForm.get('emailAddress')?.invalid &&
+          enquiryForm.get('emailAddress')?.touched
+        "
+        class="text-danger"
+      >
+        Please enter a valid email.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gender:</label><br />
+      <label class="form-check-label">
+        <input
+          type="radio"
+          value="Male"
+          formControlName="gender"
+          class="form-check-input"
+        />
+        Male
+      </label>
+      <label class="form-check-label ms-3">
+        <input
+          type="radio"
+          value="Female"
+          formControlName="gender"
+          class="form-check-input"
+        />
+        Female
+      </label>
+      <div
+        *ngIf="
+          enquiryForm.get('gender')?.invalid &&
+          enquiryForm.get('gender')?.touched
+        "
+        class="text-danger"
+      >
+        Gender is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="state" class="form-label">State:</label>
+      <select id="state" formControlName="state" class="form-select">
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="city" class="form-label">City:</label>
+      <select id="city" formControlName="city" class="form-select">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="interestedFor" class="form-label">Interested For:</label>
+      <select
+        id="interestedFor"
+        formControlName="interestedFor"
+        class="form-select"
+      >
+        <option
+          *ngFor="let interestedFor of interestedFor"
+          [value]="interestedFor"
+        >
+          {{ interestedFor }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Education Level with stream -->
+    <!-- <div class="mb-3">
+      <label for="educationLevel" class="form-label">Education Level:</label>
+      <select
+        id="educationLevel"
+        formControlName="educationLevel"
+        class="form-select"
+        (change)="onEducationLevelChange($event)"
+      >
+        <option value="">Select your education level</option>
+        <option *ngFor="let level of educationLevels" [value]="level">
+          {{ level }}
+        </option>
+      </select>
+    </div> -->
+    <div class="mb-3">
+      <label for="educationLevel" class="form-label">Education Level:</label>
+      <select
+        id="educationLevel"
+        formControlName="educationLevel"
+        class="form-select"
+      >
+        <option value="">Select your education level</option>
+        <option *ngFor="let level of educationLevels" [value]="level">
+          {{ level }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3" *ngIf="showOtherEducationInput">
+      <label for="otherEducation" class="form-label">Other Education:</label>
+      <input
+        id="otherEducation"
+        type="text"
+        formControlName="otherEducation"
+        class="form-control"
+        placeholder="Please specify your education"
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Education Status:</label><br />
+      <label class="form-check-label me-3">
+        <input
+          type="radio"
+          value="Pursuing"
+          formControlName="educationStatus"
+          name="educationStatus"
+        />
+        Pursuing
+      </label>
+      <label class="form-check-label">
+        <input
+          type="radio"
+          value="Completed"
+          formControlName="educationStatus"
+          name="educationStatus"
+        />
+        Completed
+      </label>
+      <div
+        *ngIf="
+          enquiryForm.get('educationStatus')?.invalid &&
+          enquiryForm.get('educationStatus')?.touched
+        "
+        class="text-danger"
+      >
+        Education status is required.
+      </div>
+    </div>
+
+    <!-- Stream (Conditional Based on Education Level) -->
+    <!-- <div class="mb-3" *ngIf="selectedEducationLevel">
+      <label for="stream" class="form-label">Stream:</label>
+      <select id="stream" formControlName="stream" class="form-select">
+        <option value="">Select your stream</option>
+        <option
+          *ngFor="let stream of streams[selectedEducationLevel]"
+          [value]="stream"
+        >
+          {{ stream }}
+        </option>
+      </select>
+    </div> -->
+
+    <div class="mb-3">
+      <label for="reference" class="form-label"
+        >From where you have listened?</label
+      >
+      <textarea
+        id="reference"
+        formControlName="reference"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="d-flex">
+      <button type="reset" class="btn btn-reset" (click)="onReset()">
+        Reset
+      </button>
+
+      <button
+        type="submit"
+        [disabled]="enquiryForm.invalid"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

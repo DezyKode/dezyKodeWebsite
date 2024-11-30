@@ -1,0 +1,98 @@
+/* General Form Styling */
+.enquiry-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding-top: 110px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.enquiry-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.form-control,
+.form-select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.text-danger {
+  font-size: 12px;
+  color: #d9534f;
+  margin-top: 5px;
+}
+
+/* Radio Buttons */
+.form-check-label {
+  font-size: 14px;
+  color: #555;
+  margin-right: 15px;
+}
+
+/* Buttons */
+.d-flex {
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-reset {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-reset:hover {
+  background-color: #5a6268;
+}
+
+/* Optional: Spacing for form groups */
+.mb-3 {
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .enquiry-form {
+    padding: 15px;
+  }
+
+  .btn {
+    width: 48%;
+  }
+}
